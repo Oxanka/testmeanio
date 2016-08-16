@@ -1,0 +1,27 @@
+<div class="jumbotron text-left">
+
+    <legend class="text-center">Information about order product</legend>
+
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr class="jumbotron text-center">
+            <td>Adress delivery</td>
+            <td>Products</td>
+            <td>Total price</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                {{order.fullAddr.client_city ||order.fullAddr.shop_city}},
+                {{order.fullAddr.client_street ||order.fullAddr.shop_street}},
+                {{order.fullAddr.client_house_number ||order.fullAddr.shop_house_number}}
+            </td>
+            <td>
+                <div ng-repeat="prods in order.fullProd">{{prods.name}}, {{prods.price}}</div>
+            </td>
+            <td>{{order.fullAddr.price}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

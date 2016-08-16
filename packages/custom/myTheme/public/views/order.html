@@ -1,0 +1,67 @@
+<!--<link rel="stylesheet" href="/myTheme/assets/css/style.css">-->
+
+<div class="jumbotron text-left">
+
+    <legend>Information about order product</legend>
+
+    <div class="plist col-md-12">
+        Select product
+        <label ng-repeat="product in products" class="plist col-md-12" >
+            <input  type="checkbox" ng-model="resProducts" ng-checked="checkedProducts.indexOf(product) != -1" ng-click="toggleCheck(product)" ng-value="product"> {{product.name}}   price: {{product.price}} &#8372
+        </label>
+    </div>
+
+
+    <strong class="plist col-md-12">
+        All price:
+        {{totalPrice}} &#8372
+    </strong>
+
+    <div class="plist col-md-12" >
+        Select type of delivery
+        <br>
+        <select name="singleSelect" ng-model="data.singleSelect" ng-change="optionSelect()">
+            <option value="">---Please select---</option>
+            <option value="0">To client</option>
+            <option value="1">To shop</option>
+        </select>
+    </div>
+
+
+    <div class="delopt">
+        <section ng-if="data.singleSelect == 1">
+            <label class="plist col-md-12">
+                City shops:
+                <input  type="text" class="plist" ng-model="addr.cityShop" placeholder="Example: Odessa">
+            </label>
+            <label class="plist col-md-12">
+                Shop street
+                <input  type="text" class="plist" ng-model="addr.streetShop" placeholder="Example: Shevchenko" >
+            </label>
+            <label class="plist col-md-12">
+                Shop house number
+                <input  type="text" class="plist" ng-model="addr.numberHouseShop" placeholder="Example: 18">
+            </label>
+        </section>
+
+        <section ng-if="data.singleSelect == 0">
+            <label class="plist col-md-12">
+                Client city:
+                <input  type="text" class="plist" ng-model="addr.cityClient" placeholder="Example: Odessa">
+            </label>
+            <label class="plist col-md-12">
+                Client street
+                <input type="text" class="plist" ng-model="addr.streetClient" placeholder="Example: Marshal Govorov">
+            </label>
+            <label class="plist col-md-12">
+                Client house number
+                <input  type="text" class="plist" ng-model="addr.numberHouseClient" placeholder="Example: 11A">
+            </label>
+        </section>
+    </div>
+
+    <div class="jumbotron text-center">
+        <button class="btn btn-success" ng-click="addOrder()">Save order</button>
+    </div>
+
+</div>
